@@ -13,31 +13,35 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Background (responsive) */
     body {
       background: url('images/background.jpg') no-repeat center center;
       background-size: cover;
-      background-attachment: scroll; /* ensures it scrolls */
+      background-attachment: scroll;
       color: #333;
       line-height: 1.6;
       position: relative;
     }
 
-    /* Overlay */
     body::before {
       content: "";
-      position: absolute; /* changed from fixed so it scrolls too */
+      position: absolute;
       width: 100%;
       height: 100%;
       background: rgba(238, 242, 247, 0.9);
+      z-index: -2;
+    }
+
+    /* Particles */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
       z-index: -1;
     }
 
-    /* Header */
     header {
       text-align: center;
       padding: 60px 20px 30px;
-      background: transparent;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -48,21 +52,15 @@
       object-fit: cover;
       margin-bottom: 15px;
       border: 3px solid #0077b5;
-      animation: slideDown 1s ease;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 5px;
-    }
+    h1 { font-size: 32px; }
 
     .title {
       color: #666;
       margin-bottom: 20px;
-      font-size: 16px;
     }
 
-    /* Buttons */
     .links a {
       display: inline-block;
       margin: 5px;
@@ -70,9 +68,7 @@
       border-radius: 25px;
       text-decoration: none;
       color: white;
-      font-size: 14px;
       transition: 0.3s;
-      font-weight: 500;
     }
 
     .linkedin { background: #2d76c8; }
@@ -81,15 +77,13 @@
 
     .links a:hover {
       transform: translateY(-3px);
-      opacity: 0.9;
     }
 
-    /* Sections (Glass effect) */
+    /* Sections */
     .section {
-      max-width: 800px;
+      max-width: 900px;
       margin: 30px auto;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
       padding: 25px;
       border-radius: 15px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.08);
@@ -105,41 +99,91 @@
     }
 
     .section h2 {
-      margin-bottom: 10px;
-      font-size: 20px;
+      text-align: center;
       color: #0077b5;
+      margin-bottom: 10px;
     }
 
-    ul {
-      padding-left: 20px;
+    .section p {
+      text-align: center;
+      color: #555;
+      margin-bottom: 20px;
     }
 
-    li {
-      margin-bottom: 8px;
+    /* PROJECT CARDS */
+    .project-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #f5f7fa;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      width: 180px;
+      border-radius: 10px;
+    }
+
+    .project-content {
+      flex: 1;
+    }
+
+    .project-content h3 {
+      color: #0077b5;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #2d76c8;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #1f5fa3;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      font-size: 14px;
       color: #777;
-      animation: fadeIn 1.5s ease-in;
     }
 
-    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
+    /* Responsive */
+    @media (max-width: 768px) {
+      .project-card {
+        flex-direction: column;
+        text-align: center;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .project-card img {
+        width: 100%;
+      }
+
+      .project-content p {
+        text-align: center;
       }
     }
   </style>
@@ -147,40 +191,38 @@
 
 <body>
 
-  <header>
-    <img src="images/self-image.jpeg" class="profile-img">
-    <h1>Thato Maputla</h1>
-    <p class="title">Network Engineer | Cisco certified</p>
+<canvas id="particles"></canvas>
 
-    <div class="links">
-      <a href="https://www.linkedin.com/in/thato-maputla-b835bb180" target="_blank" class="linkedin">LinkedIn</a>
-      <a href="https://github.com/thatomaputla" target="_blank" class="github">GitHub</a>
-      <a href="docs/Thato_Maputla_Resume.pdf" download class="cv">Download CV</a>
-    </div>
-  </header>
+<header>
+  <img src="images/self-image.jpeg" class="profile-img">
+  <h1>Thato Maputla</h1>
+  <p class="title">Network Engineer | Cisco certified</p>
 
-  <div class="section">
-    <h2>About Me</h2>
-    <p>
-      Cisco Certified IT professional with substantial skills in network design, system support, and programming. Proficient in server setup,
+  <div class="links">
+    <a href="https://www.linkedin.com/in/thato-maputla-b835bb180" target="_blank" class="linkedin">LinkedIn</a>
+    <a href="https://github.com/thatomaputla" target="_blank" class="github">GitHub</a>
+    <a href="docs/Thato_Maputla_Resume.pdf" download class="cv">Download CV</a>
+  </div>
+</header>
+
+<div class="section">
+  <h2>About Me</h2>
+  <p>Cisco Certified IT professional with substantial skills in network design, system support, and programming. Proficient in server setup,
       VLANs, DHCP, inter-VLAN routing, and network connectivity problems, as well as programming using PHP, MySQL,
       and Python. Possess a diverse skill set that combines both software and network skills. Currently focusing on
       progressing in network engineering with hands-on experience in designing branch office networks using Cisco
-      Packet Tracer to create secure, scalable, and efficient networks.
-    </p>
-  </div>
+      Packet Tracer to create secure, scalable, and efficient networks.</p>
+</div>
 
-  <div class="section">
-    <h2>Technical Skills</h2>
-    <p>
-      Cisco routing and switching, inter-VLAN routing, DHCP, Dynamic IPv4 allocation, Subnetting, CLI configuration,
-      trunking, LAN / WAN networking, TCP/IP networking, VPN, SD-WAN, C#, HTML, Python, JavaScript, and PHP
-    </p>
-  </div>
+<div class="section">
+  <h2>Technical Skills</h2>
+  <p>Cisco routing and switching, inter-VLAN routing, DHCP, Dynamic IPv4 allocation, Subnetting, CLI configuration,
+      trunking, LAN / WAN networking, TCP/IP networking, VPN, SD-WAN, C#, HTML, Python, JavaScript, and PHP</p>
+</div>
 
-  <div class="section">
-    <h2>Certifications</h2>
-    <ul>
+<div class="section">
+  <h2>Certifications</h2>
+  <ul>
       <li>CCNA Cybersecurity</li>
       <li>MCSA Universal Windows Platform</li>
       <li>MCSA Web Development</li>
@@ -190,36 +232,144 @@
       <li>Developing Mobile Apps</li>
       <li>ASP.NET MVC Applications</li>
     </ul>
+</div>
+
+<!-- NEW PROJECT SECTION -->
+<div class="section">
+  <h2>Cisco Packet Tracer Projects</h2>
+  <p>
+    Here are two networking projects I created using Cisco Packet Tracer.
+  </p>
+
+  <div class="project-card">
+    <img src="images/soho.png">
+    <div class="project-content">
+      <h3>Small Office/Home Office Network</h3>
+      <p>
+        A small office/home office network featuring a router, switch, and wireless setup.
+        Includes DHCP, subnetting and connectivity configuration.
+      </p>
+      <a href="https://github.com/thatomaputla/soho-branch-network" target="_blank" class="download-btn">
+        ⬇ Download Packet Tracer File
+      </a>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Cisco Packet Tracer Projects</h2>
-    <ul>
-      <li><a href="https://github.com/thatomaputla/soho-branch-network" target="_blank" >Small office/Home office network</a></li>
-      <li><a href="https://github.com/thatomaputla/enterprise-network-multi-floor" target="_blank" >Enterprise network (Multi-floor)</a></li>
-    </ul>
+  <div class="project-card">
+    <img src="images/multi-floor.png">
+    <div class="project-content">
+      <h3>Enterprise Network (Multi-floor)</h3>
+      <p>
+        Hierarchical, VLAN-segmented, and redundant enterprise network design for a 3-floor trading floor, including OSPF, DHCP, wireless access, and server integration using Cisco Packet Tracer.
+      </p>
+      <a href="https://github.com/thatomaputla/enterprise-network-multi-floor" target="_blank" class="download-btn">
+        ⬇ Download Packet Tracer File
+      </a>
+    </div>
   </div>
+</div>
 
-  <footer>
-    © 2026 Thato Maputla | Built with HTML, CSS, and JavaScript
-  </footer>
+<footer>
+  © 2026 Thato Maputla
+</footer>
 
-  <!-- Scroll Animation -->
-  <script>
-    const sections = document.querySelectorAll('.section');
+<!-- Scroll Animation -->
+<script>
+const sections = document.querySelectorAll('.section');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('show');
-          }, index * 150);
-        }
-      });
-    }, { threshold: 0.2 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('show');
+      }, index * 150);
+    }
+  });
+}, { threshold: 0.2 });
 
-    sections.forEach(section => observer.observe(section));
-  </script>
+sections.forEach(section => observer.observe(section));
+</script>
+
+<!-- Particles -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = 2;
+    this.speedX = Math.random() - 0.5;
+    this.speedY = Math.random() - 0.5;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+
+  draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function connect() {
+  for (let a = 0; a < particles.length; a++) {
+    for (let b = a; b < particles.length; b++) {
+      let dx = particles[a].x - particles[b].x;
+      let dy = particles[a].y - particles[b].y;
+      let distance = dx * dx + dy * dy;
+
+      if (distance < 12000) {
+        ctx.strokeStyle = "rgba(0,0,0,0.1)";
+        ctx.beginPath();
+        ctx.moveTo(particles[a].x, particles[a].y);
+        ctx.lineTo(particles[b].x, particles[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function init() {
+  particles = [];
+  for (let i = 0; i < 70; i++) {
+    particles.push(new Particle());
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+
+  connect();
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
 
 </body>
 </html>
