@@ -110,6 +110,41 @@
       margin-bottom: 20px;
     }
 
+    /* WORK CARDS */
+.work-card {
+  background: #f5f7fa;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-5px);
+}
+
+.work-card h3 {
+  color: #0077b5;
+  margin-bottom: 5px;
+}
+
+.work-role {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.work-card ul {
+  padding-left: 20px;
+  color: #444;
+}
+
+.work-card li {
+  margin-bottom: 8px;
+}
+
     /* PROJECT CARDS */
     .project-card {
       display: flex;
@@ -222,39 +257,46 @@
 
 <div class="section">
   <h2>Work Experience</h2>
-  <p>Department of Home Affairs: System Support Technician
+  <p>My professional journey in IT and networking.</p>
+
+  <div class="work-card">
+    <h3>Department of Home Affairs</h3>
+    <span class="work-role">System Support Technician</span>
     <ul>
       <li>Managed and maintained physical servers to ensure they are up and running, have backup systems in place,
 and comply with security requirements. Fluent in most Layer 1, 2, and 3 networking technologies
 and able to diagnose and repair faults on all three network layers.</li>
       <li>Provided ICT/network support services. This included troubleshooting local area network issues. Also
-included is configuring VLANs, DHCP, DNS, WAN/LAN networking, etc. </li>
-      <li>Provided help desk support services (Windows 11 and Microsoft 365. This included addressing
-hardware/software problems, Wi-Fi connectivity issues, printer support, etc. </li>
-      <li>Branch office network design and implementation using Cisco Packet Tracer (VLANs, DHCP)</li>
+included is configuring VLANs, DHCP, DNS, WAN/LAN networking, etc.</li>
+      <li>Provided help desk support services (Windows 11 and Microsoft 365). This included addressing
+hardware/software problems, Wi-Fi connectivity issues, printer support, etc.</li>
+      <li>Branch office network design and implementation using Cisco Packet Tracer (VLANs, DHCP).</li>
     </ul>
-  </p>
-  
-  <p>Paxana: IT Support Technician
+  </div>
+
+  <div class="work-card">
+    <h3>Paxana</h3>
+    <span class="work-role">IT Support Technician</span>
     <ul>
       <li>Reduced downtime for employees by troubleshooting hardware and software problems.</li>
       <li>Assisted in the development of internal documentation related to IT procedures, increasing overall
 departmental organization and accessibility of information.</li>
       <li>Contributed to the successful completion of IT projects by effectively managing tasks within deadlines.</li>
     </ul>
-  </p>
+  </div>
 
-  <p>MyTrend: Software developer
+  <div class="work-card">
+    <h3>MyTrend</h3>
+    <span class="work-role">Software Developer</span>
     <ul>
-      <li>Improved software performance by identifying and resolving bottlenecks in the code.</li>
+      <li>Optimized software performance by identifying and resolving bottlenecks in the code.</li>
       <li>Collaborated with cross-functional teams to deliver high-quality software products on time and within budget,
 using JavaScript and CSS.</li>
       <li>Maximized scalability of applications by employing modular programming approaches that facilitate future
 expansions easily.</li>
       <li>HTML, CSS, and JavaScript, implementing scroll-triggered animations and modern UI design principles.</li>
     </ul>
-  </p>
-  
+  </div>
 </div>
 
 <div class="section">
